@@ -12,7 +12,7 @@ echo "Starting backup cleanup..."
 # Find all database backup parent directories
 find "$BASE_PATH" \
     -type d \
-    -regex ".*/backups/databases/[^/]+$"
+    -regex ".*/backups/databases/[^/]+$" \
     2>/dev/null | while read -r DB_DIR
 do
 
