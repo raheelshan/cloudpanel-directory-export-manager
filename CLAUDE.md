@@ -63,3 +63,4 @@ A web-based interface that simplifies managing CloudPanel backup exclusions by p
 - Update APP_PASSWORD_HASH in config/auth.php when changing password
 - Ensure storage/ directory permissions are correct
 - Run cloudpanel-sites-scan.sh periodically to refresh sites.json
+- Adjust the `OUTPUT` variable in cloudpanel-sites-scan.sh to match your actual CloudPanel site path

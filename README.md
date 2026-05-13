@@ -80,6 +80,8 @@ Scans all CloudPanel sites and generates `storage/sites.json` with:
 - Directory path
 - Directory size
 
+**Important**: Adjust the `OUTPUT` variable in this script to match your actual CloudPanel site path.
+
 ### cloudpanel-backup-cleaner.sh
 Manages CloudPanel database backups. Keeps only the most recent `KEEP_DAYS` backups (default: 1 day).
 
