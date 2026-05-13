@@ -1,0 +1,5 @@
+/home/sitedomain/htdocs
+/home/sitedomain/logs
+/home/sitedomain/tmp
+/home/sitedomain/backups
+/home/sitedomain/.ssh
