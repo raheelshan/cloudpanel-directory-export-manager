@@ -11,7 +11,7 @@ This application:
 
 ## Prerequisites
 - CloudPanel with multi-site hosting
-- Apache/Nginx web server
+- Nginx web server
 - PHP 7.4+ with SQLite support
 - Command line access to server
 
@@ -76,6 +76,8 @@ Go to CloudPanel Backup section, copy all content from the downloaded file, and 
 
 - **Login Screen**: ![Login Screen](login.jpg)
 - **Directory List**: ![Directory List](directory-list.jpg)
+- **Export List**: ![Export List](export-list.jpg)
+- **Excludes Export**: ![Excludes Export](excludes.png)
 
 ## Scripts
 
