@@ -73,4 +73,7 @@ for userhome in /home/*; do
         }" >> $OUTPUT
 
     done	
+	
+done	
+	
 echo "]" >> $OUTPUT	
