@@ -43,13 +43,13 @@ chmod 755 storage/
 
 ## Setup
 
-1. Create a new PHP site in CloudPanel (via File Manager or FTP)
+1. Create a new PHP site in CloudPanel
 2. Upload all files from this repository to the site root
 3. Complete your setup by running the directory scan script:
    ```bash
    ./cloudpanel-sites-scan.sh
    ```
-4. Access the interface at `http://your-cloudpanel-domain/index.php`
+4. Access the interface at `http://your-site-domain`
 
 ## Usage
 
@@ -71,6 +71,11 @@ Click "Export Excludes" to download `excludes.txt` file.
 Go to CloudPanel Backup section, copy all content from the downloaded file, and paste it into the Exclude Textarea.
 
 **Important**: Export only works after saving selections.
+
+## Screenshots
+
+- **Login Screen**: ![Login Screen](login.jpg)
+- **Directory List**: ![Directory List](directory-list.jpg)
 
 ## Scripts
 

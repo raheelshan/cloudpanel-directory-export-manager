@@ -252,6 +252,11 @@ $('.domain-checkbox').each(function () {
 
 </script>
 
+<!-- Developer Attribution -->
+<div class="text-center mt-6 text-sm text-gray-600">
+    <a href="https://raheelshan.com" target="_blank" class="text-gray-600 hover:text-blue-600">Developed by Raheel Shan</a>
+</div>
+
 </body>
 
 

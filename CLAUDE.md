@@ -47,6 +47,11 @@ A web-based interface that simplifies managing CloudPanel backup exclusions by p
 - **Path grouping**: Organized by domain for clarity
 - **SQLite persistence**: Stores selections between sessions
 
+## Screenshots
+
+- **Login Screen**: ![Login Screen](login.jpg)
+- **Directory List**: ![Directory List](directory-list.jpg)
+
 ## Important Notes
 - Export only works after saving selections
 - `KEEP_DAYS=1` in backup cleaner (configurable)

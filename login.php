@@ -138,6 +138,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </div>
 
+        <!-- Developer Attribution -->
+        <div class="text-center mt-4 text-sm text-gray-600">
+            <a href="https://raheelshan.com" target="_blank" class="text-gray-600 hover:text-blue-600">Developed by Raheel Shan</a>
+        </div>
+
     </div>
 
 </body>
