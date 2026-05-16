@@ -90,12 +90,88 @@ Scans all CloudPanel sites and generates `storage/sites.json` with:
 **Important**: Adjust the `OUTPUT` variable in this script to match your actual CloudPanel site path.
 
 ### cloudpanel-backup-cleaner.sh
-Manages CloudPanel database backups. Keeps only the most recent `KEEP_DAYS` backups (default: 1 day).
+Manages CloudPanel database backups by retaining the most recent backups and deleting older ones. The number of backups to keep is controlled by the KEEP_DAYS variable (default: 1 day).
 
-Change retention period by editing `KEEP_DAYS` variable:
+#### Key Features:
+- Retains specified number of recent backups (configurable)
+- Automates backup cleanup process
+- Compatible with the backup exclude manager workflow
+- Safe deletion with timestamp-based retention
+
+#### Configuration:
+Change retention period by editing at the top of the script:
 ```bash
-KEEP_DAYS=7  # Keep last 7 days of backups
+KEEP_DAYS=7 # Keep last 7 days of backups
 ```
+Adjust `KEEP_DAYS` based on your backup policy requirements.
+
+#### Usage:
+- **Run manually**: `./cloudpanel-backup-cleaner.sh`
+- **Automate with cron**: See below for cron job examples
+
+#### Location:
+- Script path: `cloudpanel-backup-cleaner.sh`
+- Backup directories: `/home/*/backups/databases/`
+
+#### Technical Details:
+1. Searches for backup directories using path pattern matching
+2. Maintains newest backups first
+3. Preserves exactly KEEP_DAYS number of backups
+4. Uses date-based directory naming convention (YYYY-MM-DD)
+5. Processes all user-specific backup directories in `/home/`
+
+#### Cron Job Automation
+Set up automated execution with cron jobs. Common schedules:
+
+**Option 1: Run every day at 2 AM (recommended)**
+```bash
+# Edit crontab
+crontab -e
+
+# Add this line:
+0 2 * * * /absolute/path/to/cloudpanel-backup-cleaner.sh >> /var/log/cloudpanel-backup-cleanup.log 2>&1
+```
+
+**Option 2: Run every Sunday at 3 AM (weekly cleanup)**
+```bash
+0 3 * * 0 /absolute/path/to/cloudpanel-backup-cleaner.sh >> /var/log/cloudpanel-backup-cleanup.log 2>&1
+```
+
+**Option 3: Run both scripts daily (recommended for optimal sync)**
+```bash
+# Runs backup cleaner at 1:30 AM
+0 1 * * * /absolute/path/to/cloudpanel-backup-cleaner.sh >> /var/log/cloudpanel-backup-cleanup.log 2>&1
+
+# Runs site scanner at 2:00 AM (30 minutes later)
+30 2 * * * /absolute/path/to/cloudpanel-sites-scan.sh >> /var/log/cloudpanel-site-scan.log 2>&1
+```
+
+**Important Cron Notes:**
+- Use absolute paths to scripts (`/home/user/cloudpanel-backup-cleaner.sh`)
+- Redirect output to log file for debugging
+- Test scripts manually before setting up cron
+- Ensure cron user has execute permissions on scripts
+- Set proper PATH in crontab if commands aren't found
+
+**Setting Up Cron:**
+```bash
+# Open crontab for current user
+crontab -e
+
+# Add your cron job
+# Save and exit (Ctrl+X, Y, Enter in nano)
+
+# To list existing cron jobs
+crontab -l
+```
+
+#### Safety Notes:
+- Always verify backups before enabling automated cleanup
+- Test retention settings before deploying to production
+- Backup directory paths must match your CloudPanel configuration
+- Check log files regularly for errors
+- Consider adding email notifications for critical failures
+- Ensure proper file permissions for script execution
 
 ## Maintenance
 - Update password hash in `config/auth.php` periodically
